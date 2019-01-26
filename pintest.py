@@ -1,12 +1,30 @@
 import i2c_lcd_driver
 import RPi.GPIO as GPIO
+import requests
 import time
+
+import config
+
+from pytz import timezone
+
+tz = timezone("EST")
+
+notifyme_code = config.NOTIFYME_TOKEN
+
+notifyme_url = config.NOTIFYME_URL
 
 mylcd = i2c_lcd_driver.lcd()
 
 def dingdong(ctx):
+    from datetime import datetime
+
     print("doorbell pressed")
     mylcd.lcd_display_string("doorbell pressed", 1)
+    notify_message = "Doorbell was rung, %s" % \
+         datetime.strftime(datetime.now(tz), "%A at %-I:%m, %p")
+    requests.get(
+            notifyme_url % (notify_message, notifyme_code)
+    )
 
 def clearlcd():
     mylcd.lcd_clear()
