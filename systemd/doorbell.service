@@ -1,0 +1,10 @@
+[Unit]
+Description=Doorbell service
+after=multi-user.target
+
+[Service]
+Type=idle
+ExecStart=/usr/bin/python /root/pintest.py > /tmp/pintest.log 2>&1
+
+[Install]
+WantedBy=multi-user.target
