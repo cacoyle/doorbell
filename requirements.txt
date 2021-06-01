@@ -8,4 +8,4 @@ pytz==2018.9
 requests==2.21.0
 RPi.GPIO==0.6.5
 smbus-cffi==0.5.1
-urllib3==1.24.1
+urllib3==1.26.5
