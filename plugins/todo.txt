@@ -1,0 +1,3 @@
+# Make scannable plugins for performing additional tasks when there is a
+# doorbell press event, such as changing the color of the lights, and
+# grabbing frames from the external cameras via rtsp
