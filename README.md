@@ -51,7 +51,7 @@ In addition, there's no room on either side of the front door to properly mount 
 1) Go to the [Lambda management page](https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions)
 2) Edit your function !*TODO make both ends read the dynamodb user table from ssm*
 3) Paste the content of [lambda_function.py](/lambda/lambda_function.py) into the body of the new lambda
-4) You can also create tests for [discovery](/lambda/test/discovery.json) and [authorization](/lambda/test/authorization.json)
+4) You can also create tests for [discovery](/lambda/tests/discovery.json) and [authorization](/lambda/tests/authorization.json)
 ##### DynamoDB Configuration
 1) Go to the [dynamo configuration page](https://console.aws.amazon.com/dynamodb/home?region=us-east-1)
 2) Click `Create Table`
@@ -69,15 +69,15 @@ In addition, there's no room on either side of the front door to properly mount 
 2) Click 'Create Role'
 3) Select `AWS Service` from the 'trusted entity' tiles
 4) Select 'Lambda' from the 'common use cases' section
-5) In the next page under 'Attach permissions policies', select the `AWSLambdaBasicExecutionRole`, as well as the policy you created in the [previous step](IAM-Policies)
+5) In the next page under 'Attach permissions policies', select the `AWSLambdaBasicExecutionRole`, as well as the policy you created in the [previous step](#IAM-Policies)
 6) Click 'next' and add tags as desired
 7) Click next, enter your desired role name, I used 'PIDoorBellRole' for example
 8) Client 'create role'
 ##### IAM Role for Lambda Function
-Go to the [Lambda configuration page](https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions) and edit your function
+1) Go to the [Lambda configuration page](https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions) and edit your function
 2) Under the configuration tab, on the lefthand menu, select `Permissions`
 3) In the 'Execution Role' section, click `Edit`
-4) Under the 'Edit basic settings' page, select 'Use an Existing role', and select the role you created in the [previous step](IAM-Role-for-Lambda-Execution)
+4) Under the 'Edit basic settings' page, select 'Use an Existing role', and select the role you created in the [previous step](#IAM-Role-for-Lambda-Execution)
 5) Click Save
 ##### Doorbell IAM User
 1) Go to the [IAM User configuration page](https://console.aws.amazon.com/iam/home#/users)
