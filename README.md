@@ -15,7 +15,7 @@ In addition, there's no room on either side of the front door to properly mount 
 * Acknowledging that I am not an expert and i have no idea what I'm doing at any time whatsoever
 
 ***
-### Manual Setup
+### Manual AWS / Alexa Setup
 ###### *NOTE: The below URLs are static to the us-east-1 region, adjust accordingly for your environment*
 ##### Security Profile
 1) Go to the [Developer Console API Access page](https://developer.amazon.com/apps-and-games/console/api-access/home.html) 
@@ -86,14 +86,24 @@ In addition, there's no room on either side of the front door to properly mount 
 4) Click the 'Attach existing policies directly tile, select the name of the IAM policy you created in the [policies step](#IAM-Roles-and-Policies) to enable dynamo access
 6) Click next, review, and finish
 ***
-### Pulumi Setup
-1)
+### Pulumi AWS / Alexa Setup
+# TODO
+***
+### Manual Client Installation
+# TODO
+***
+### Scripted Client Installation
+# TODO
 ***
 ### Integrations
 
 ##### Hue
 
 ##### RTSP
+
+##### NotifyMe
+
+##### SMTP
 ***
 ### Custom Integrations
 ##### TODO
