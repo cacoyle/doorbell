@@ -16,14 +16,29 @@ In addition, there's no room on either side of the front door to properly mount 
 
 ***
 ### Manual Setup
+###### *NOTE: The below URLs are static to the us-east-1 region, adjust accordingly for your environment*
 ##### Security Profile
 1) Go to the [Developer Console API Access page](https://developer.amazon.com/apps-and-games/console/api-access/home.html) 
 2) Under the 'app submission api' dropdown, click 'create a new security profile'
 3) Enter your desired name and description, and click 'save'
 4) Click the 'web settings' tab, and copy the client id and client secret values
+##### Lambda Function for Discovery and Authorization
+1) Go to the [Lambda management page](https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions)
+2) Click the 'create function' button
+3) Select the 'Author from scratch' card
+4) Select your function name, and select the latest available python runtime (*3.7 at this time*)
+5) Click 'create function' and copy your lambda function's ARN
 ##### Alexa Skill
 1) Go to the [Alexa Skill Developer page](https://developer.amazon.com/alexa/console/ask) and click 'create skill'
-2) 
+2) Copy your new skill's id
+3) Copy your lambda function's ARN into the 'default endpoint' field
+4) If you have geographic region considerations, click the relevant checkboxes below
+5) In the left hand sidebar, click 'Account Linking', and enter the following values
+| Field  | Value |
+| -------| ----- |
+| Your Web Authorization URI  | https://www.amazon.com/ap/oa  |
+| Access Token URI  | https://api.amazon.com/auth/o2/token  |
+
 ***
 ### Pulumi Setup
 1)
