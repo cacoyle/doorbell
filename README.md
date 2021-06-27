@@ -28,6 +28,7 @@ In addition, there's no room on either side of the front door to properly mount 
 3) Select the `Author from scratch` card
 4) Select your function name, and select the latest available python runtime (*`3.7` at this time*)
 5) Click `create function` and copy your lambda function's ARN
+6) Add a trigger to your function selecting 'Alexa Smart Home'
 ##### Alexa Skill
 1) Go to the [Alexa Skill Developer page](https://developer.amazon.com/alexa/console/ask) and click 'create skill'
 2) Copy your new skill's id
@@ -50,8 +51,40 @@ In addition, there's no room on either side of the front door to properly mount 
 1) Go to the [Lambda management page](https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions)
 2) Edit your function !*TODO make both ends read the dynamodb user table from ssm*
 3) Paste the content of [lambda_function.py](/lambda/lambda_function.py) into the body of the new lambda
-4) You can also create tests for [discovery](/lambda/tests/discovery.json) and [authorization](/lambda/tests/authorization.json)
-
+4) You can also create tests for [discovery](/lambda/test/discovery.json) and [authorization](/lambda/test/authorization.json)
+##### DynamoDB Configuration
+1) Go to the [dynamo configuration page](https://console.aws.amazon.com/dynamodb/home?region=us-east-1)
+2) Click `Create Table`
+3) Enter the table name and set partition key to user (think of this like a primary key)
+4) Update the `DYNAMO_TABLE` value in the lambda function and `DYNAMO_TABLE` value in config.py to match the name of the dynamo table you've created
+##### IAM Policies
+1) Go to the [IAM policy configuration page](https://console.aws.amazon.com/iam/home#/policies)
+2) Click 'Create Policy' button
+3) In the new page, click the `JSON` tab and clear out the default contents
+4) Paste the contents of [the dynamo iam policy](iam/policy.json), be sure to update the `Resource` ARN to match the region and name of the dynamo table you've created, click 'next'
+5) Add any tags if desired, click next
+5) Enter the desired name of the new iam policy, I used 'PIDoorBellDynamoAccess' for example
+##### IAM Role for Lambda Execution
+1) Go to the [IAM Role configuration page](https://console.aws.amazon.com/iam/home#/roles)
+2) Click 'Create Role'
+3) Select `AWS Service` from the 'trusted entity' tiles
+4) Select 'Lambda' from the 'common use cases' section
+5) In the next page under 'Attach permissions policies', select the `AWSLambdaBasicExecutionRole`, as well as the policy you created in the [previous step](IAM-Policies)
+6) Click 'next' and add tags as desired
+7) Click next, enter your desired role name, I used 'PIDoorBellRole' for example
+8) Client 'create role'
+##### IAM Role for Lambda Function
+Go to the [Lambda configuration page](https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions) and edit your function
+2) Under the configuration tab, on the lefthand menu, select `Permissions`
+3) In the 'Execution Role' section, click `Edit`
+4) Under the 'Edit basic settings' page, select 'Use an Existing role', and select the role you created in the [previous step](IAM-Role-for-Lambda-Execution)
+5) Click Save
+##### Doorbell IAM User
+1) Go to the [IAM User configuration page](https://console.aws.amazon.com/iam/home#/users)
+2) Click 'Add User' button
+3) Enter the desired username, and set the 'access type' to `Programmatic access`, click `next`
+4) Click the 'Attach existing policies directly tile, select the name of the IAM policy you created in the [policies step](IAM-Roles-and-Policies) to enable dynamo access
+6) Click next, review, and finish
 ***
 ### Pulumi Setup
 1)
