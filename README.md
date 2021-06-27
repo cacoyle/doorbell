@@ -83,7 +83,7 @@ In addition, there's no room on either side of the front door to properly mount 
 1) Go to the [IAM User configuration page](https://console.aws.amazon.com/iam/home#/users)
 2) Click 'Add User' button
 3) Enter the desired username, and set the 'access type' to `Programmatic access`, click `next`
-4) Click the 'Attach existing policies directly tile, select the name of the IAM policy you created in the [policies step](IAM-Roles-and-Policies) to enable dynamo access
+4) Click the 'Attach existing policies directly tile, select the name of the IAM policy you created in the [policies step](#IAM-Roles-and-Policies) to enable dynamo access
 6) Click next, review, and finish
 ***
 ### Pulumi Setup
@@ -97,5 +97,3 @@ In addition, there's no room on either side of the front door to properly mount 
 ***
 ### Custom Integrations
 ##### TODO
-
-
