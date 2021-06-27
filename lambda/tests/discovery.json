@@ -1,0 +1,16 @@
+{
+  "directive": {
+    "header": {
+      "messageId": "3cb510c1-eeeb-4e3a-9ee2-47b7c67598bc",
+      "name": "Discover",
+      "namespace": "Alexa.Discovery",
+      "payloadVersion": "3"
+    },
+    "payload": {
+      "scope": {
+        "token": "lsdakjfsalkjfsalkfjdsak",
+        "type": "BearerToken"
+      }
+    }
+  }
+}

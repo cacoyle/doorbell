@@ -46,7 +46,11 @@ In addition, there's no room on either side of the front door to properly mount 
 6) In the left hand sidebar, click `Permissions`
 7) Enable the `Send Alexa Events` toggle
 8) Copy the `Alexa Client Id` and `Alexa Client Secret` values
-##### Lambda Function for Discovery and Authorization
+##### Update Lambda Function for Discovery and Authorization
+1) Go to the [Lambda management page](https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions)
+2) Edit your function !*TODO make both ends read the dynamodb user table from ssm*
+3) Paste the content of [lambda_function.py](/lambda/lambda_function.py) into the body of the new lambda
+4) You can also create tests for [discovery](/lambda/test/discovery.json) and [authorization](/lambda/test/authorization.json)
 
 ***
 ### Pulumi Setup

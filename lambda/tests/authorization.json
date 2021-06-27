@@ -1,0 +1,20 @@
+{
+  "directive": {
+    "header": {
+      "namespace": "Alexa.Authorization",
+      "name": "AcceptGrant",
+      "payloadVersion": "3",
+      "messageId": "a62200f4-7450-0154-9cb5-01bc01c4ccaa"
+    },
+    "payload": {
+      "grant": {
+        "type": "OAuth2.AuthorizationCode",
+        "code": "ANFfxxxxxxxxxxx"
+      },
+      "grantee": {
+        "type": "BearerToken",
+        "token": "Atza|Iw...."
+      }
+    }
+  }
+}
